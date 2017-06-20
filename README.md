@@ -7,3 +7,5 @@ Pieces are:
 * [Viewing App](https://github.com/graboskyc/CarniDigiSign_IOT) - UWP app that can be deployed on a Raspberry Pi or Intel Compute Stick running Windows 10 IOT to display the digial signage stored by the server. 
 
 The end result is a simple to deploy and manage utility for digital signage. 
+
+![](SS/ss01.jpg)
