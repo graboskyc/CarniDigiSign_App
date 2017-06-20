@@ -4,9 +4,12 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Popups;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,7 +31,22 @@ namespace SignEditor
         public MainPage()
         {
             this.InitializeComponent();
+
+            var view = ApplicationView.GetForCurrentView();
+
+            view.TitleBar.BackgroundColor = Color.FromArgb(255, 11, 140, 26);
+            view.TitleBar.ButtonBackgroundColor = Color.FromArgb(255, 11, 140, 26);
+            view.TitleBar.ButtonForegroundColor = Colors.White;
+            view.TitleBar.ButtonPressedForegroundColor = Color.FromArgb(255, 11, 140, 26);
+            view.TitleBar.ButtonPressedBackgroundColor = Colors.White;
+            view.TitleBar.ButtonHoverBackgroundColor = Colors.White;
+            view.TitleBar.ButtonHoverForegroundColor = Color.FromArgb(255, 11, 140, 26);
+
+            Application.Current.Resources["SystemControlHighlightListAccentLowBrush"] = new SolidColorBrush(Color.FromArgb(255, 174, 232, 181));
+            Application.Current.Resources["SystemControlHighlightListAccentMediumBrush"] = new SolidColorBrush(Color.FromArgb(255, 174, 232, 181));
+
         }
+        
 
         private async void btn_test_Click(object sender, RoutedEventArgs e)
         { 

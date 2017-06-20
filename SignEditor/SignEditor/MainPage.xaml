@@ -38,19 +38,39 @@
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-                <TextBox Grid.Row="0" Name="txt_name"></TextBox>
-                <TextBox Grid.Row="1" Name="txt_uri"></TextBox>
-                <TextBox Grid.Row="2" Name="txt_feed"></TextBox>
-                <TextBox Grid.Row="3" Name="txt_order"></TextBox>
-                <TextBox Grid.Row="4" Name="txt_duration"></TextBox>
-                <TextBox Grid.Row="5" Name="txt_sign_text"></TextBox>
-                <TextBox Grid.Row="6" Name="txt_sign_type"></TextBox>
-                <TextBox Grid.Row="7" Name="txt_id" IsReadOnly="True"></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">Name:</TextBlock>
+                <TextBox Grid.Row="0" Grid.Column="1"  Name="txt_name" HorizontalAlignment="Stretch"></TextBox>
 
-                <StackPanel Grid.Row="8" Orientation="Horizontal">
-                    <Button Name="btn_test" Click="btn_test_Click" Content="Get All" Margin="10,10,10,10" Width="76"></Button>
+                <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">URI:</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" Name="txt_uri"></TextBox>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">Feed:</TextBlock>
+                <TextBox Grid.Row="2" Grid.Column="1" Name="txt_feed"></TextBox>
+
+                <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">Order:</TextBlock>
+                <TextBox Grid.Row="3" Grid.Column="1" Name="txt_order"></TextBox>
+
+                <TextBlock Grid.Row="4" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">Duration:</TextBlock>
+                <TextBox Grid.Row="4" Grid.Column="1" Name="txt_duration"></TextBox>
+
+                <TextBlock Grid.Row="5" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">Text:</TextBlock>
+                <TextBox Grid.Row="5" Grid.Column="1" Name="txt_sign_text"></TextBox>
+
+                <TextBlock Grid.Row="6" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">Type:</TextBlock>
+                <TextBox Grid.Row="6" Grid.Column="1" Name="txt_sign_type"></TextBox>
+
+                <TextBlock Grid.Row="7" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">ID:</TextBlock>
+                <TextBox Grid.Row="7" Grid.Column="1" Name="txt_id" IsReadOnly="True"></TextBox>
+
+                <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <Button Name="btn_test" Click="btn_test_Click" Content="Get All" Margin="0,10,10,10" Width="76"></Button>
                     <Button Name="btn_update" Click="btn_update_Click" Content="Save" Margin="10,10,10,10" Width="76"></Button>
                     <Button Name="btn_delete" Click="btn_delete_Click" Content="Delete" Margin="10,10,10,10" Width="76"></Button>
                 </StackPanel>
