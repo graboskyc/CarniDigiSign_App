@@ -47,11 +47,11 @@
                 <TextBox Grid.Row="4" Name="txt_duration"></TextBox>
                 <TextBox Grid.Row="5" Name="txt_sign_text"></TextBox>
                 <TextBox Grid.Row="6" Name="txt_sign_type"></TextBox>
-                <TextBox Grid.Row="7" Name="txt_id"></TextBox>
+                <TextBox Grid.Row="7" Name="txt_id" IsReadOnly="True"></TextBox>
 
                 <StackPanel Grid.Row="8" Orientation="Horizontal">
                     <Button Name="btn_test" Click="btn_test_Click" Content="Get All"></Button>
-                    <Button Name="btn_update" Click="btn_update_Click" Content="Update"></Button>
+                    <Button Name="btn_update" Click="btn_update_Click" Content="Save"></Button>
                 </StackPanel>
 
                 

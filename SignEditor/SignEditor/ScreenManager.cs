@@ -33,12 +33,13 @@ namespace SignEditor
 
     public class ScreenManager
     {
-        
+
+        string _baseURI = "";
 
         public async Task<Screen[]> GetScreensAsync()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://grabosky.net:8080/");
+            client.BaseAddress = new Uri(_baseURI);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -54,13 +55,21 @@ namespace SignEditor
 
             }
 
-            return sl;
+            Screen ns = new Screen();
+            Screen[] nsl = new Screen[sl.Length + 1];
+            ns.name = "New Screen";
+            for (int i = 0; i < sl.Length; i++)
+                nsl[i] = sl[i];
+
+            nsl[sl.Length] = ns;
+
+            return nsl;
         }
 
         public async Task<Screen> GetScreenAsync(string id)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://grabosky.net:8080/");
+            client.BaseAddress = new Uri(_baseURI);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -82,7 +91,7 @@ namespace SignEditor
         public async Task UpdateScreenAsync(Screen screenToUpdate)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("");
+            client.BaseAddress = new Uri(_baseURI);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -97,9 +106,33 @@ namespace SignEditor
             StringContent sc = new StringContent(o.ToString(), Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = await client.PutAsync(url, sc);
-            
+
             response.EnsureSuccessStatusCode();
 
+            string r = await response.Content.ReadAsStringAsync();
+
+        }
+
+        public async Task CreateScreenAsync(Screen screenToUpdate)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_baseURI);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            string content = JsonConvert.SerializeObject(screenToUpdate);
+            string url = "screens/" + screenToUpdate._id;
+            var o = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(content);
+            o.Property("_id").Remove();
+            o.Property("__v").Remove();
+            o.Property("modified_date").Remove();
+            o.Property("created_date").Remove();
+
+            StringContent sc = new StringContent(o.ToString(), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PostAsync(url, sc);
+
+            response.EnsureSuccessStatusCode();
 
             string r = await response.Content.ReadAsStringAsync();
 

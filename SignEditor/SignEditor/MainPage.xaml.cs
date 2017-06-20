@@ -40,15 +40,30 @@ namespace SignEditor
         private void lv_main_ItemClick(object sender, ItemClickEventArgs e)
         {
             Screen s = (Screen)e.ClickedItem;
-            txt_name.Text = s.name;
-            txt_feed.Text = s.feed;
-            txt_id.Text = s._id;
-            txt_duration.Text = s.duration;
-            txt_order.Text = s.order;
-            txt_sign_text.Text = s.sign_text;
-            txt_sign_type.Text = s.sign_type;
-            txt_uri.Text = s.uri;
 
+            if(s.name == "New Screen")
+            {
+                txt_name.Text ="";
+                txt_feed.Text = "";
+                txt_id.Text = "";
+                txt_duration.Text = "";
+                txt_order.Text = "";
+                txt_sign_text.Text = "";
+                txt_sign_type.Text = "";
+                txt_uri.Text = "";
+            }
+            else
+            {
+                txt_name.Text = s.name;
+                txt_feed.Text = s.feed;
+                txt_id.Text = s._id;
+                txt_duration.Text = s.duration;
+                txt_order.Text = s.order;
+                txt_sign_text.Text = s.sign_text;
+                txt_sign_type.Text = s.sign_type;
+                txt_uri.Text = s.uri;
+            }
+            
         }
 
         private async void btn_update_Click(object sender, RoutedEventArgs e)
@@ -63,8 +78,15 @@ namespace SignEditor
             s.uri = txt_uri.Text;
             s._id = txt_id.Text;
 
-            await _sm.UpdateScreenAsync(s);
-
+            if(s._id != "")
+            {
+                await _sm.UpdateScreenAsync(s);
+            }
+            else
+            {
+                await _sm.CreateScreenAsync(s);
+            }
+            
             var val = await _sm.GetScreensAsync();
             lv_main.ItemsSource = val;
         }
