@@ -138,6 +138,24 @@ namespace SignEditor
 
         }
 
+        public async Task DeleteScreenAsync(Screen screenToUpdate)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_baseURI);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            string content = JsonConvert.SerializeObject(screenToUpdate);
+            string url = "screens/" + screenToUpdate._id;
+
+            HttpResponseMessage response = await client.DeleteAsync(url);
+
+            response.EnsureSuccessStatusCode();
+
+            string r = await response.Content.ReadAsStringAsync();
+
+        }
+
 
     }
 }

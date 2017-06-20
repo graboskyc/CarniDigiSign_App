@@ -90,5 +90,22 @@ namespace SignEditor
             var val = await _sm.GetScreensAsync();
             lv_main.ItemsSource = val;
         }
+
+        private async void btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            Screen s = new Screen();
+            s._id = txt_id.Text;
+
+            try
+            {
+                await _sm.DeleteScreenAsync(s);
+            }
+            catch
+            {
+
+            }
+            var val = await _sm.GetScreensAsync();
+            lv_main.ItemsSource = val;
+        }
     }
 }
