@@ -43,7 +43,12 @@ namespace SignEditor
     public class ScreenManager
     {
 
-        string _baseURI = "/";
+        string _baseURI = "";
+
+        public ScreenManager(string uri)
+        {
+            _baseURI = uri;
+        }
 
         public async Task<Screen[]> GetScreensAsync()
         {

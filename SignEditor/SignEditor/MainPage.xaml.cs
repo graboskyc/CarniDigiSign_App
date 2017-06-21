@@ -27,7 +27,7 @@ namespace SignEditor
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        ScreenManager _sm = new ScreenManager();
+        ScreenManager _sm;
         public MainPage()
         {
             this.InitializeComponent();
@@ -45,12 +45,12 @@ namespace SignEditor
             Application.Current.Resources["SystemControlHighlightListAccentLowBrush"] = new SolidColorBrush(Color.FromArgb(255, 174, 232, 181));
             Application.Current.Resources["SystemControlHighlightListAccentMediumBrush"] = new SolidColorBrush(Color.FromArgb(255, 174, 232, 181));
 
-            Load();
         }
         
 
-        private async void btn_refresh_Click(object sender, RoutedEventArgs e)
+        private void btn_refresh_Click(object sender, RoutedEventArgs e)
         {
+            _sm = new ScreenManager(txt_serveruri.Text);
             Load();
         }
 
