@@ -45,11 +45,17 @@ namespace SignEditor
             Application.Current.Resources["SystemControlHighlightListAccentLowBrush"] = new SolidColorBrush(Color.FromArgb(255, 174, 232, 181));
             Application.Current.Resources["SystemControlHighlightListAccentMediumBrush"] = new SolidColorBrush(Color.FromArgb(255, 174, 232, 181));
 
+            Load();
         }
         
 
-        private async void btn_test_Click(object sender, RoutedEventArgs e)
-        { 
+        private async void btn_refresh_Click(object sender, RoutedEventArgs e)
+        {
+            Load();
+        }
+
+        private async void Load()
+        {
             var val = await _sm.GetScreensAsync();
             lv_main.ItemsSource = val;
         }

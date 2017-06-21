@@ -29,12 +29,21 @@ namespace SignEditor
         public int __v { get; set; }
         public DateTime modified_date { get; set; }
         public DateTime created_date { get; set; }
+        public string Icon {
+            get {
+                if (sign_type == "web") { return "\xE774"; }
+                else if (sign_type == "text") { return "\xE8E3"; }
+                else if (sign_type == "image") { return "\xE8B9"; }
+                else if (name == "New Screen") { return "\xE7C3"; }
+                else { return "\xE897"; }
+            }
+        }
     }
 
     public class ScreenManager
     {
 
-        string _baseURI = "";
+        string _baseURI = "/";
 
         public async Task<Screen[]> GetScreensAsync()
         {
@@ -59,7 +68,10 @@ namespace SignEditor
             Screen[] nsl = new Screen[sl.Length + 1];
             ns.name = "New Screen";
             for (int i = 0; i < sl.Length; i++)
-                nsl[i] = sl[i];
+            {
+                int order = Convert.ToInt32(sl[i].order);
+                nsl[order] = sl[i];
+            }
 
             nsl[sl.Length] = ns;
 
