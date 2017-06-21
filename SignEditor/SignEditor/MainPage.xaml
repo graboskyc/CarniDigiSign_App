@@ -39,7 +39,7 @@
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
-                    <RowDefinition Height="120"></RowDefinition>
+                    <RowDefinition Height="130"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"></ColumnDefinition>
@@ -70,8 +70,8 @@
                 <TextBlock Grid.Row="8" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">ID:</TextBlock>
                 <TextBox Grid.Row="8" Grid.Column="1" Name="txt_id" IsReadOnly="True"></TextBox>
 
-                <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
-                    <Button Name="btn_refresh" Click="btn_refresh_Click" Content="&#xE72C;" FontFamily="Segoe MDL2 Assets"  Margin="0,10,10,10" Width="100" Height="100" FontSize="76" Foreground="#0B8C1A" BorderBrush="#0B8C1A" Background="#FFFFFF"></Button>
+                <StackPanel Grid.Row="9" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Name="btn_refresh" Click="btn_refresh_Click" Content="&#xE72C;" FontFamily="Segoe MDL2 Assets"  Margin="10,10,10,10" Width="100" Height="100" FontSize="76" Foreground="#0B8C1A" BorderBrush="#0B8C1A" Background="#FFFFFF"></Button>
                     <Button Name="btn_update" Click="btn_update_Click" Content="&#xE74E;" FontFamily="Segoe MDL2 Assets"  Margin="10,10,10,10" Width="100" Height="100" FontSize="76" Foreground="#0B8C1A" BorderBrush="#0B8C1A" Background="#FFFFFF"></Button>
                     <Button Name="btn_delete" Click="btn_delete_Click" Content="&#xE74D;" FontFamily="Segoe MDL2 Assets"  Margin="10,10,10,10" Width="100" Height="100" FontSize="76" Foreground="#0B8C1A" BorderBrush="#0B8C1A" Background="#FFFFFF"></Button>
                 </StackPanel>
