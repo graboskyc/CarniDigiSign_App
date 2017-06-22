@@ -69,18 +69,15 @@ namespace SignEditor
 
             }
 
+            List<Screen> nsl;
+            nsl = sl.ToList<Screen>();
+            nsl.Sort((x, y) => Convert.ToInt32(x.order).CompareTo(Convert.ToInt32(y.order)));
+
             Screen ns = new Screen();
-            Screen[] nsl = new Screen[sl.Length + 1];
             ns.name = "New Screen";
-            for (int i = 0; i < sl.Length; i++)
-            {
-                int order = Convert.ToInt32(sl[i].order);
-                nsl[order] = sl[i];
-            }
+            nsl.Add(ns);
 
-            nsl[sl.Length] = ns;
-
-            return nsl;
+            return nsl.ToArray<Screen>();
         }
 
         public async Task<Screen> GetScreenAsync(string id)
