@@ -72,7 +72,7 @@ namespace SignEditor
                 txt_id.Text = "";
                 txt_duration.Text = "";
                 txt_order.Text = "";
-                txt_sign_text.Text = "";
+                txt_sign_text.Document.SetText(Windows.UI.Text.TextSetOptions.None, "");
                 txt_sign_type.Text = "";
                 txt_uri.Text = "";
             }
@@ -83,7 +83,7 @@ namespace SignEditor
                 txt_id.Text = s._id;
                 txt_duration.Text = s.duration;
                 txt_order.Text = s.order;
-                txt_sign_text.Text = s.sign_text;
+                txt_sign_text.Document.SetText(Windows.UI.Text.TextSetOptions.None, s.sign_text);
                 txt_sign_type.Text = s.sign_type;
                 txt_uri.Text = s.uri;
             }
@@ -97,7 +97,9 @@ namespace SignEditor
             s.feed = txt_feed.Text;
             s.duration = txt_duration.Text;
             s.order = txt_order.Text;
-            s.sign_text = txt_sign_text.Text;
+            string enteredtext = "";
+            txt_sign_text.Document.GetText(Windows.UI.Text.TextGetOptions.None, out enteredtext);
+            s.sign_text = enteredtext;
             s.sign_type = txt_sign_type.Text;
             s.uri = txt_uri.Text;
             s._id = txt_id.Text;

@@ -50,7 +50,7 @@
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
-                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="130"></RowDefinition>
@@ -76,7 +76,7 @@
                 <TextBox Grid.Row="5" Grid.Column="1" Name="txt_duration"></TextBox>
 
                 <TextBlock Grid.Row="6" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">Text:</TextBlock>
-                <TextBox Grid.Row="6" Grid.Column="1" Name="txt_sign_text"></TextBox>
+                <RichEditBox Grid.Row="6" Grid.Column="1" Name="txt_sign_text"></RichEditBox>
 
                 <TextBlock Grid.Row="7" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">Type:</TextBlock>
                 <TextBox Grid.Row="7" Grid.Column="1" Name="txt_sign_type"></TextBox>
