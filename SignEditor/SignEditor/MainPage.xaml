@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="400"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
@@ -18,23 +18,27 @@
                 <RowDefinition Height="36"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <ListView x:Name="lv_main" Grid.Column="0" IsItemClickEnabled="True" ItemClick="lv_main_ItemClick" Background="#0B8C1A">
+            <ListView x:Name="lv_main" Grid.Column="0" IsItemClickEnabled="True" ItemClick="lv_main_ItemClick" Background="#0B8C1A" Width="400">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="54"/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding Icon}" FontFamily="Segoe MDL2 Assets" FontSize="28" Width="50" Grid.Column="0" VerticalAlignment="Center" Foreground="White" />
-                            <TextBlock Text="{Binding name}" FontSize="36" Grid.Column="1" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="&#xE71D;" FontFamily="Segoe MDL2 Assets" FontSize="14" Width="35" Grid.Column="1" VerticalAlignment="Center" Foreground="White" />
+                            <TextBlock Text="{Binding feed}" FontSize="14" Grid.Column="2" VerticalAlignment="Center" Foreground="White" TextAlignment="Left" />
+                            <TextBlock Text="{Binding name}" FontSize="36" Grid.Column="3" VerticalAlignment="Center" Foreground="White" TextAlignment="Left" />
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
             <StackPanel Orientation="Horizontal" Grid.Row="1">
-                <TextBox Name="txt_serveruri" Text="http:///" Width="250" ></TextBox>
+                <TextBox Name="txt_serveruri" Text="http:///" Width="330" ></TextBox>
                 <Button Name="btn_refresh" Click="btn_refresh_Click" Content="&#xE72C;" FontFamily="Segoe MDL2 Assets" Margin="10,0,0,0"  Width="36" Height="36" FontSize="16" Foreground="#0B8C1A" Background="#FFFFFF"></Button>
             </StackPanel>
             
@@ -58,6 +62,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Center" FontSize="30" VerticalAlignment="Center">Name:</TextBlock>
