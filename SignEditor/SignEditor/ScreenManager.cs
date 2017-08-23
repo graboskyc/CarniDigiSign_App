@@ -34,7 +34,8 @@ namespace SignEditor
                 if (sign_type == "web") { return "\xE774"; }
                 else if (sign_type == "text") { return "\xE8E3"; }
                 else if (sign_type == "image") { return "\xE8B9"; }
-                else if ( sign_type == "tweet") { return "\xE90A"; }
+                else if (sign_type == "tweet") { return "\xE90A"; }
+                else if (sign_type == "video") { return "\xE714"; }
                 else if (name == "New Screen") { return "\xE7C3"; }
                 else { return "\xE897"; }
             }
