@@ -36,6 +36,7 @@ namespace SignEditor
                 else if (sign_type == "image") { return "\xE8B9"; }
                 else if (sign_type == "tweet") { return "\xE90A"; }
                 else if (sign_type == "video") { return "\xE714"; }
+                else if (sign_type == "hide") { return "\xEA14"; }
                 else if (name == "New Screen") { return "\xE7C3"; }
                 else { return "\xE897"; }
             }
