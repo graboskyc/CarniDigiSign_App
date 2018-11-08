@@ -50,7 +50,7 @@ namespace SignEditor
 
         private void btn_refresh_Click(object sender, RoutedEventArgs e)
         {
-            _sm = new ScreenManager(txt_serveruri.Text);
+            _sm = new ScreenManager(txt_serveruri.Text, txt_passcode.Text);
             Load();
         }
 

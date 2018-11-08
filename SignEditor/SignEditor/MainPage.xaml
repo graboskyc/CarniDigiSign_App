@@ -16,6 +16,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="36"></RowDefinition>
+                <RowDefinition Height="36"></RowDefinition>
             </Grid.RowDefinitions>
 
             <ListView x:Name="lv_main" Grid.Column="0" IsItemClickEnabled="True" ItemClick="lv_main_ItemClick" Background="#0B8C1A" Width="400">
@@ -38,6 +39,10 @@
             </ListView>
 
             <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <TextBox Name="txt_passcode" Text="passcode" Width="330" ></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
                 <TextBox Name="txt_serveruri" Text="http:///" Width="330" ></TextBox>
                 <Button Name="btn_refresh" Click="btn_refresh_Click" Content="&#xE72C;" FontFamily="Segoe MDL2 Assets" Margin="10,0,0,0"  Width="36" Height="36" FontSize="16" Foreground="#0B8C1A" Background="#FFFFFF"></Button>
             </StackPanel>

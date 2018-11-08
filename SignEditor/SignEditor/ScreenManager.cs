@@ -47,10 +47,12 @@ namespace SignEditor
     {
 
         string _baseURI = "";
+        string _passcode = "";
 
-        public ScreenManager(string uri)
+        public ScreenManager(string uri, string passcode)
         {
             _baseURI = uri;
+            _passcode = passcode;
         }
 
         public async Task<Screen[]> GetScreensAsync()
@@ -64,7 +66,7 @@ namespace SignEditor
             string items = "";
 
 
-            HttpResponseMessage response = await client.GetAsync("screens");
+            HttpResponseMessage response = await client.GetAsync("screens?secret="+_passcode);
             if (response.IsSuccessStatusCode)
             {
                 items = await response.Content.ReadAsStringAsync();
@@ -94,7 +96,7 @@ namespace SignEditor
             string item = "";
 
 
-            HttpResponseMessage response = await client.GetAsync("screens/" + id);
+            HttpResponseMessage response = await client.GetAsync("screens?id=" + id);
             if (response.IsSuccessStatusCode)
             {
                 item = await response.Content.ReadAsStringAsync();
@@ -113,7 +115,7 @@ namespace SignEditor
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             string content = JsonConvert.SerializeObject(screenToUpdate);
-            string url = "screens/" + screenToUpdate._id;
+            string url = "save?secret="+_passcode+"&id=" + screenToUpdate._id;
             var o = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(content);
             o.Property("_id").Remove();
             o.Property("__v").Remove();
@@ -122,7 +124,7 @@ namespace SignEditor
 
             StringContent sc = new StringContent(o.ToString(), Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.PutAsync(url, sc);
+            HttpResponseMessage response = await client.PostAsync(url, sc);
 
             response.EnsureSuccessStatusCode();
 
@@ -138,7 +140,7 @@ namespace SignEditor
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             string content = JsonConvert.SerializeObject(screenToUpdate);
-            string url = "screens/" + screenToUpdate._id;
+            string url = "new?secret=" + _passcode;
             var o = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(content);
             o.Property("_id").Remove();
             o.Property("__v").Remove();
@@ -163,9 +165,9 @@ namespace SignEditor
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             string content = JsonConvert.SerializeObject(screenToUpdate);
-            string url = "screens/" + screenToUpdate._id;
+            string url = "delete?secret=" + _passcode + "&id=" + screenToUpdate._id;
 
-            HttpResponseMessage response = await client.DeleteAsync(url);
+            HttpResponseMessage response = await client.GetAsync(url);
 
             response.EnsureSuccessStatusCode();
 
