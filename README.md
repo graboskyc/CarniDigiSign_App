@@ -7,11 +7,11 @@ Now this has been simplified as the server solution is legacy in favor of using 
 
 # About this repo
 
-So now this app will allow for creating signs in rotation and the other project still display screens](https://github.com/graboskyc/CarniDigiSign_IOT).
+So now this app will allow for creating signs in rotation and the other project still [display screens](https://github.com/graboskyc/CarniDigiSign_IOT).
 
 The end result is a simple to deploy and manage utility for digital signage. 
 
-![](SS/ss01.jpg)
+![](SS/SS01.png)
 
 # Sign type support
 
